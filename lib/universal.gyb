@@ -1,0 +1,52 @@
+// Algorithm.gyb
+// Universal code-generation template
+
+%{
+import os
+import platform
+import sys
+%}
+
+//
+// Generated algorithm interface
+//
+
+struct Algorithm {
+    name: String
+    version: String
+    platform: String
+}
+
+func createAlgorithm(name, version) {
+    return Algorithm(
+        name: name,
+        version: version,
+        platform: platform.system()
+    )
+}
+
+// Universal operations
+func detect(input) {
+    return {
+        "type": type(input),
+        "value": input
+    }
+}
+
+func analyze(input) {
+    result = detect(input)
+
+    return {
+        "detected": result,
+        "analysis": "semantic analysis"
+    }
+}
+
+func execute(input) {
+    analysis = analyze(input)
+
+    return {
+        "status": "success",
+        "result": analysis
+    }
+}
